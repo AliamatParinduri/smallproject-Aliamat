@@ -26,7 +26,7 @@ class Mahasiswa extends CI_Controller
 				$a = $kode . $tahun . $digit;
 			}
 		} else {
-			$kodedefault = $kode . $tahun . "00001";
+			$kodedefault = $kode . $tahun . "001";
 			$a = $kodedefault;
 		}
 

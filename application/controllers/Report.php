@@ -68,7 +68,7 @@ class Report extends CI_Controller
             $this->load->library('pdf');
 
             $this->pdf->setPaper('A4', 'landscape');
-            $this->pdf->atch = array("Attachment" => FALSE);
+            $this->pdf->atch = array("Attachment" => TRUE);
             $this->pdf->filename = "laporan-Report-Mahasiswa.pdf";
             $this->pdf->load_view('report/pdf_laporan_mahasiswa', $data);
         } else {

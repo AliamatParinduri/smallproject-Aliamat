@@ -31,6 +31,7 @@ class ModelMataKuliah extends CI_Model
 
         // Initialize Array with fetched data
         $data = array();
+
         foreach ($users as $user) {
             $data[] = array("id" => $user['kd_mata_kuliah'], "text" => $user['nm_matkul']);
         }

@@ -604,18 +604,19 @@
                     type: 'post',
                     dataType: 'json',
                     data: {
+                        'no_mahasiswa': $("#mahasiswa").val(),
                         'semester': $("#semester").val(),
                     },
 
                     success: function(data) {
-                        if (data.length > 0) {
+                        if (data.data.length > 0) {
                             $(".flash-data1").html("Pencarian Ditemukan");
                             $(".error-data1").html("");
                             $("#add_mtkl").show();
                             // var html = '<div class="row"><div class="col-md-6"><div class="form-group"><label for="mata_kuliah">Pilih Mata Kuliah</label><select name="mata_kuliah[]" id="mata_kuliah" class="select2matkul form-control"></select></div></div><div class="col-md-4"><div class="form-group"><label for="mata_kuliah">Pilih Mata Kuliah</label><input type="text" name="jml_mutu[]" id="jml_mutu1" class="form-control" placeholder="Masukan Jumlah Mutu"></div></div><div class="col-md-2"><label for="kd_supplier"></label><br><button type="button" class="btn btn-success mt-2"> Tambah Matkul</button></div></div><button type="button" class="btn btn-primary mt-4">Save Data</button>';
                             // $("#hapusmtl1").append(html)
                         } else {
-                            $(".error-data1").html("Tidak Ada Mata Kuliah Yang Terdaftar Untuk Semester " + $("#semester").val());
+                            $(".error-data1").html("Tidak Ada Mata Kuliah Yang Terdaftar Untuk Semester " + $("#semester").val() + " dan jurusan " + data.jurusan);
                             $(".flash-data1").html("");
                         }
                         toast();

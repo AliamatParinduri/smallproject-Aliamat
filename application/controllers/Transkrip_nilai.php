@@ -98,12 +98,19 @@ class Transkrip_nilai extends CI_Controller
     public function cari_data()
     {
         $semester = $this->input->post('semester');
+        $no_mahasiswa = $this->input->post('no_mahasiswa');
+
+        $this->db->select("*");
+        $this->db->from("mahasiswa");
+        $this->db->join("jurusan", 'mahasiswa.jurusan=jurusan.kd_jurusan');
+        $this->db->where(['no_mahasiswa' => $no_mahasiswa]);
+        $dt = $this->db->get()->row_array();
 
         $this->session->set_userdata('semester', $semester);
 
-        $data = $this->db->get_where('mata_kuliah', ['semester' => $semester])->result_array();
+        $data = $this->db->get_where('mata_kuliah', ['semester' => $semester, 'jurusan' => $dt['jurusan']])->result_array();
 
-        echo json_encode($data);
+        echo json_encode(['data' => $data, 'jurusan' => $dt['nm_jurusan']]);
     }
 
     public function add_transkrip_nilai()
